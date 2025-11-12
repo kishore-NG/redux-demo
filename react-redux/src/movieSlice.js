@@ -13,7 +13,12 @@ const movieSlice = createSlice({
   initialState: initialState,
   reducers: {
     addMovie: (state, action) => {
-        state.movies.push(action.payload);
+        const newMovie = {
+            id: state.movies.length > 0 ? state.movies[state.movies.length - 1].id + 1 : 1,
+            title: action.payload,
+            
+        };
+        state.movies.push(newMovie);
     },
     removeMovie: (state, action) => {
       // Accept either an id or a payload object with an `id` field
